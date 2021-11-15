@@ -1,3 +1,6 @@
+import os
+os.environ['RAYLIB_BIN_PATH'] = '.'
+
 from time import sleep
 
 import raylibpy
