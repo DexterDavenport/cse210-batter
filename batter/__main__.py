@@ -13,7 +13,7 @@ from game.physics_service import PhysicsService
 from game.audio_service import AudioService
 
 # TODO: Add imports similar to the following when you create these classes
-# from game.brick import Brick
+from game.brick import Brick
 # from game.ball import Ball
 # from game.paddle import Paddle
 # from game.control_actors_action import ControlActorsAction
@@ -28,6 +28,16 @@ def main():
 
     cast["bricks"] = []
     # TODO: Create bricks here and add them to the list
+    # bricks = []
+    # brick1 = Point(10, 10)
+    # brick2 = Point(100, 10)
+    # brick3 = Point(200, 10)
+    # bricks.append(brick1)
+    # bricks.append(brick2)
+    # bricks.append(brick3)
+    
+
+    # # cast["bricks"] = bricks
 
     cast["balls"] = []
     # TODO: Create a ball here and add it to the list
