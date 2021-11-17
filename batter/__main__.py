@@ -35,19 +35,6 @@ def main():
     bricks = []
     balls = []
     
-    # brick2 = Actor()
-    # brick2.set_position(Point(100, 10))
-    # brick2.set_image(constants.IMAGE_BRICK)
-    # brick2.set_width(constants.BRICK_WIDTH)
-    # brick2.set_height(constants.BRICK_HEIGHT)
-    # bricks.append(brick2)
-    # brick3 = Actor()
-    # brick3.set_position(Point(200, 10))
-    # brick3.set_image(constants.IMAGE_BRICK)
-    # brick3.set_width(constants.BRICK_WIDTH)
-    # brick3.set_height(constants.BRICK_HEIGHT)
-    # bricks.append(brick3)
-    
     for brick in range(0, 96):
         brick = Actor()
         brick.set_image(constants.IMAGE_BRICK_2)
@@ -85,8 +72,6 @@ def main():
 
     balls.append(ball)
     cast["balls"] = balls
-    
-
 
     cast["paddle"] = []
     # TODO: Create a paddle here and add it to the list
@@ -99,7 +84,6 @@ def main():
     paddles.append(paddle)
     cast["paddle"] = paddles
 
-
     # Create the script {key: tag, value: list}
     script = {}
 
@@ -107,7 +91,6 @@ def main():
     output_service = OutputService()
     physics_service = PhysicsService()
     audio_service = AudioService()
-
 
     control_actors_action = ControlActorsAction(input_service)
     draw_actors_action = DrawActorsAction(output_service)
@@ -117,8 +100,6 @@ def main():
     script["input"] = [control_actors_action]
     script["update"] = []
     script["output"] = [draw_actors_action]
-
-
 
     # Start the game
     output_service.open_window("Batter")
