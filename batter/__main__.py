@@ -11,7 +11,8 @@ from game.input_service import InputService
 from game.output_service import OutputService
 from game.physics_service import PhysicsService
 from game.audio_service import AudioService
-from game.move_actor_action import MoveActorsAction 
+from game.control_actors_action import ControlActorsAction
+# from game.move_actor_action import MoveActorsAction 
 
 # TODO: Add imports similar to the following when you create these classes
 # from game.brick import Brick
@@ -46,16 +47,27 @@ def main():
     # brick3.set_width(constants.BRICK_WIDTH)
     # brick3.set_height(constants.BRICK_HEIGHT)
     # bricks.append(brick3)
-    for brick in range(0, 80):
+    
+    for brick in range(0, 96):
+        brick = Actor()
+        brick.set_image(constants.IMAGE_BRICK_2)
+
         if x > 751:
             x = 1
             y += 40
-        
-        brick = Actor()
+        if x > 200 or y ==180:
+            brick.set_image(constants.IMAGE_BRICK_1)
+        if y ==60 and x > 200:
+            brick.set_image(constants.IMAGE_BRICK_3)
+        if y ==140:
+            brick.set_image(constants.IMAGE_BRICK_3)
+        if y ==220:
+            brick.set_image(constants.IMAGE_BRICK_3)
+
         brick.set_position(Point(x, y))
         
         x += 50
-        brick.set_image(constants.IMAGE_BRICK)
+        # brick.set_image(constants.IMAGE_BRICK)
         brick.set_width(constants.BRICK_WIDTH)
         brick.set_height(constants.BRICK_HEIGHT)
         bricks.append(brick)
@@ -96,18 +108,20 @@ def main():
     physics_service = PhysicsService()
     audio_service = AudioService()
 
+
+    control_actors_action = ControlActorsAction(input_service)
     draw_actors_action = DrawActorsAction(output_service)
 
     # TODO: Create additional actions here and add them to the script
 
-    script["input"] = []
+    script["input"] = [control_actors_action]
     script["update"] = []
     script["output"] = [draw_actors_action]
 
 
 
     # Start the game
-    output_service.open_window("Batter");
+    output_service.open_window("Batter")
     audio_service.start_audio()
     audio_service.play_sound(constants.SOUND_START)
     
