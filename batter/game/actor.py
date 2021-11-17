@@ -25,7 +25,7 @@ class Actor:
         """
         self._text = ""
         self._position = Point(0, 0)
-        self._velocity = Point(0, 10)
+        self._velocity = Point(0, 0)
         self._width = 0
         self._height = 0
         self._image = ""

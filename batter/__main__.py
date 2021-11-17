@@ -1,4 +1,6 @@
 import os
+
+# from batter.game import move_actor_action
 os.environ['RAYLIB_BIN_PATH'] = '.'
 
 import random
@@ -12,11 +14,12 @@ from game.output_service import OutputService
 from game.physics_service import PhysicsService
 from game.audio_service import AudioService
 from game.control_actors_action import ControlActorsAction
-# from game.move_actor_action import MoveActorsAction 
+from game.move_actors_action import MoveActorsAction 
+from game.ball import Ball
 
 # TODO: Add imports similar to the following when you create these classes
 # from game.brick import Brick
-# from game.ball import Ball
+
 # from game.paddle import Paddle
 # from game.control_actors_action import ControlActorsAction
 # from game.handle_collisions_action import HandleCollisionsAction
@@ -64,12 +67,13 @@ def main():
 
     cast["balls"] = []
     # TODO: Create a ball here and add it to the list
-    ball = Actor()
+    ball = Ball()
     ball.set_position(Point(380, 500))
     ball.set_image(constants.IMAGE_BALL)
     ball.set_width(constants.BALL_WIDTH)
     ball.set_height(constants.BALL_HEIGHT)
     ball.get_position()
+    
     # MoveActorsAction._move_actor(ball)
 
     balls.append(ball)
@@ -93,14 +97,14 @@ def main():
     output_service = OutputService()
     physics_service = PhysicsService()
     audio_service = AudioService()
-
+    move_actors_action = MoveActorsAction()
     control_actors_action = ControlActorsAction(input_service)
     draw_actors_action = DrawActorsAction(output_service)
 
     # TODO: Create additional actions here and add them to the script
 
     script["input"] = [control_actors_action]
-    script["update"] = []
+    script["update"] = [move_actors_action]
     script["output"] = [draw_actors_action]
 
     # Start the game
