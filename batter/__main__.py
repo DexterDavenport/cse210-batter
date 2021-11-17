@@ -32,20 +32,24 @@ def main():
     
 
     brick1 = Actor()
-    # brick1.set_text("")
     brick1.set_position(Point(10, 10))
+    brick1.set_image(constants.IMAGE_BRICK)
+    brick1.set_width(constants.BRICK_WIDTH)
+    brick1.set_height(constants.BRICK_HEIGHT)
     bricks.append(brick1)
     brick2 = Actor()
-    # brick2.set_text("")
     brick2.set_position(Point(100, 10))
+    brick2.set_image(constants.IMAGE_BRICK)
+    brick2.set_width(constants.BRICK_WIDTH)
+    brick2.set_height(constants.BRICK_HEIGHT)
     bricks.append(brick2)
     brick3 = Actor()
-    # brick3.set_text("")
     brick3.set_position(Point(200, 10))
+    brick3.set_image(constants.IMAGE_BRICK)
+    brick3.set_width(constants.BRICK_WIDTH)
+    brick3.set_height(constants.BRICK_HEIGHT)
     bricks.append(brick3)
-    for i in bricks:
-            Point.get_x
-            Point.get_y
+    
 
     
     cast["bricks"] = bricks
