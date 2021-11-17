@@ -35,7 +35,7 @@ def main():
     bricks = []
     balls = []
     
-    for brick in range(0, 96):
+    for brick in range(0, 112):
         brick = Actor()
         brick.set_image(constants.IMAGE_BRICK_2)
 
@@ -50,6 +50,8 @@ def main():
             brick.set_image(constants.IMAGE_BRICK_3)
         if y ==220:
             brick.set_image(constants.IMAGE_BRICK_3)
+        if y ==260:
+            brick.set_image(constants.IMAGE_BRICK_1)
 
         brick.set_position(Point(x, y))
         
