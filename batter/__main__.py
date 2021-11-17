@@ -11,6 +11,7 @@ from game.input_service import InputService
 from game.output_service import OutputService
 from game.physics_service import PhysicsService
 from game.audio_service import AudioService
+from game.move_actor_action import MoveActorsAction 
 
 # TODO: Add imports similar to the following when you create these classes
 # from game.brick import Brick
@@ -22,6 +23,8 @@ from game.audio_service import AudioService
 # from game.move_actors_action import MoveActorsAction
 
 def main():
+    x = 1
+    y = 20
 
     # create the cast {key: tag, value: list}
     cast = {}
@@ -29,36 +32,60 @@ def main():
     cast["bricks"] = []
     # TODO: Create bricks here and add them to the list
     bricks = []
+    balls = []
     
-
-    brick1 = Actor()
-    brick1.set_position(Point(10, 10))
-    brick1.set_image(constants.IMAGE_BRICK)
-    brick1.set_width(constants.BRICK_WIDTH)
-    brick1.set_height(constants.BRICK_HEIGHT)
-    bricks.append(brick1)
-    brick2 = Actor()
-    brick2.set_position(Point(100, 10))
-    brick2.set_image(constants.IMAGE_BRICK)
-    brick2.set_width(constants.BRICK_WIDTH)
-    brick2.set_height(constants.BRICK_HEIGHT)
-    bricks.append(brick2)
-    brick3 = Actor()
-    brick3.set_position(Point(200, 10))
-    brick3.set_image(constants.IMAGE_BRICK)
-    brick3.set_width(constants.BRICK_WIDTH)
-    brick3.set_height(constants.BRICK_HEIGHT)
-    bricks.append(brick3)
-    
-
-    
+    # brick2 = Actor()
+    # brick2.set_position(Point(100, 10))
+    # brick2.set_image(constants.IMAGE_BRICK)
+    # brick2.set_width(constants.BRICK_WIDTH)
+    # brick2.set_height(constants.BRICK_HEIGHT)
+    # bricks.append(brick2)
+    # brick3 = Actor()
+    # brick3.set_position(Point(200, 10))
+    # brick3.set_image(constants.IMAGE_BRICK)
+    # brick3.set_width(constants.BRICK_WIDTH)
+    # brick3.set_height(constants.BRICK_HEIGHT)
+    # bricks.append(brick3)
+    for brick in range(0, 80):
+        if x > 751:
+            x = 1
+            y += 40
+        
+        brick = Actor()
+        brick.set_position(Point(x, y))
+        
+        x += 50
+        brick.set_image(constants.IMAGE_BRICK)
+        brick.set_width(constants.BRICK_WIDTH)
+        brick.set_height(constants.BRICK_HEIGHT)
+        bricks.append(brick)
     cast["bricks"] = bricks
 
     cast["balls"] = []
     # TODO: Create a ball here and add it to the list
+    ball = Actor()
+    ball.set_position(Point(380, 500))
+    ball.set_image(constants.IMAGE_BALL)
+    ball.set_width(constants.BALL_WIDTH)
+    ball.set_height(constants.BALL_HEIGHT)
+    ball.get_position()
+    # MoveActorsAction._move_actor(ball)
+
+    balls.append(ball)
+    cast["balls"] = balls
+    
+
 
     cast["paddle"] = []
     # TODO: Create a paddle here and add it to the list
+    paddles = []
+    paddle = Actor()
+    paddle.set_position(Point(345, 530))
+    paddle.set_image(constants.IMAGE_PADDLE)
+    paddle.set_width(constants.PADDLE_WIDTH)
+    paddle.set_height(constants.PADDLE_HEIGHT)
+    paddles.append(paddle)
+    cast["paddle"] = paddles
 
 
     # Create the script {key: tag, value: list}

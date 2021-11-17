@@ -25,7 +25,7 @@ class Actor:
         """
         self._text = ""
         self._position = Point(0, 0)
-        self._velocity = Point(0, 0)
+        self._velocity = Point(0, 10)
         self._width = 0
         self._height = 0
         self._image = ""
@@ -95,6 +95,24 @@ class Actor:
             Point: The actor's speed and direction.
         """
         return self._velocity
+
+    def move_next(self):
+        """Moves the actor to its next position according to its velocity. Will 
+        wrap the position from one side of the screen to the other when it 
+        reaches the boundary in either direction.
+        
+        Args:
+            self (Actor): an instance of Actor.
+        """
+        x = self._position.get_x()
+        y = self._position.get_y()
+        dx = self._velocity.get_x()
+        dy = self._velocity.get_y()
+        x = (x + dx) % constants.MAX_X
+        y = (y + dy) % constants.MAX_Y
+
+        position = Point(x, y)
+        self._position = position
     
     def set_position(self, position):
         """Updates the actor's position to the given one.
