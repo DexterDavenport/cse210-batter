@@ -16,14 +16,14 @@ from game.audio_service import AudioService
 from game.control_actors_action import ControlActorsAction
 from game.move_actors_action import MoveActorsAction 
 from game.ball import Ball
+from game.brick import Brick
+from game.handle_off_screen_action import handle_off_screen_action
+from game.paddle import Paddle
 
 # TODO: Add imports similar to the following when you create these classes
-# from game.brick import Brick
 
-# from game.paddle import Paddle
 # from game.control_actors_action import ControlActorsAction
 # from game.handle_collisions_action import HandleCollisionsAction
-# from game.handle_off_screen_action import HandleOffScreenAction
 # from game.move_actors_action import MoveActorsAction
 
 def main():
@@ -36,15 +36,18 @@ def main():
     cast["bricks"] = []
     # TODO: Create bricks here and add them to the list
     bricks = []
-    balls = []
+    
     
     for brick in range(0, 112):
-        brick = Actor()
-        brick.set_image(constants.IMAGE_BRICK_2)
+        brick = Brick()
+        # brick.set_image(constants.IMAGE_BRICK_2)
 
         if x > 751:
             x = 1
             y += 40
+        # This is what makes the American Flag theme
+        if x < 200 and (y == 20 or 60 or 100 or 140):
+            brick.set_image(constants.IMAGE_BRICK_2)
         if x > 200 or y ==180:
             brick.set_image(constants.IMAGE_BRICK_1)
         if y ==60 and x > 200:
@@ -59,34 +62,26 @@ def main():
         brick.set_position(Point(x, y))
         
         x += 50
-        # brick.set_image(constants.IMAGE_BRICK)
-        brick.set_width(constants.BRICK_WIDTH)
-        brick.set_height(constants.BRICK_HEIGHT)
+
         bricks.append(brick)
     cast["bricks"] = bricks
 
     cast["balls"] = []
     # TODO: Create a ball here and add it to the list
+    balls = []
     ball = Ball()
     ball.set_position(Point(380, 500))
-    ball.set_image(constants.IMAGE_BALL)
-    ball.set_width(constants.BALL_WIDTH)
-    ball.set_height(constants.BALL_HEIGHT)
-    ball.get_position()
-    
-    # MoveActorsAction._move_actor(ball)
-
     balls.append(ball)
     cast["balls"] = balls
 
     cast["paddle"] = []
     # TODO: Create a paddle here and add it to the list
     paddles = []
-    paddle = Actor()
+    paddle = Paddle()
     paddle.set_position(Point(345, 530))
-    paddle.set_image(constants.IMAGE_PADDLE)
-    paddle.set_width(constants.PADDLE_WIDTH)
-    paddle.set_height(constants.PADDLE_HEIGHT)
+    # paddle.set_image(constants.IMAGE_PADDLE)
+    # paddle.set_width(constants.PADDLE_WIDTH)
+    # paddle.set_height(constants.PADDLE_HEIGHT)
     paddles.append(paddle)
     cast["paddle"] = paddles
 
