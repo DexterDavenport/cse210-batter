@@ -3,7 +3,6 @@ import os
 # from batter.game import move_actor_action
 os.environ['RAYLIB_BIN_PATH'] = '.'
 
-import random
 from game import constants
 from game.director import Director
 from game.actor import Actor
@@ -21,11 +20,6 @@ from game.handle_off_screen_action import Handle_Off_Screen_Action
 from game.paddle import Paddle
 from game.handle_collisions_action import HandleCollisionsAction
 
-# TODO: Add imports similar to the following when you create these classes
-
-# from game.control_actors_action import ControlActorsAction
-# from game.move_actors_action import MoveActorsAction
-
 def main():
     x = 1
     y = 20
@@ -42,7 +36,7 @@ def main():
         brick = Brick()
         # brick.set_image(constants.IMAGE_BRICK_2)
 
-        if x > 751:
+        if x > 800:
             x = 1
             y += 40
         # This is what makes the American Flag theme
@@ -102,7 +96,7 @@ def main():
 
     script["input"] = [control_actors_action]
     script["update"] = [move_actors_action,handle_collisions_action, handle_off_screen_action]
-    script["output"] = [draw_actors_action]
+    script["output"] = [draw_actors_action,handle_off_screen_action]
 
     # Start the game
     output_service.open_window("Batter")

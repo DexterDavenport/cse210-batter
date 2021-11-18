@@ -12,12 +12,25 @@ class HandleCollisionsAction(Action):
         self._physics_service = physics_service
 
     def execute(self, cast):
-
         ball = cast["balls"][0]
         paddle = cast["paddle"][0]
+
         if self._physics_service.is_collision(ball, paddle):
-            velocity = Actor.get_velocity(ball)
-            self._velocity = velocity * - 1
+            x = -5
+            y = -5
+            ball.set_velocity(Point(x,y))
             audio_service.play_sound(constants.SOUND_BOUNCE)
-            
-            # print('this worked')
+
+
+        bricks = cast["bricks"]
+        times_run = 0
+        for brick in bricks:
+            # print('it made it hear')
+            if self._physics_service.is_collision(ball, brick):
+                print('it made it hear')
+
+                x = 5
+                y = 5
+                ball.set_velocity(Point(x,y))
+                times_run += 1
+                # print(times_run)

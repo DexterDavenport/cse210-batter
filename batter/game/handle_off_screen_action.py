@@ -10,16 +10,16 @@ class Handle_Off_Screen_Action(Action):
         self._physics_service = physics_service
 
     def execute(self, cast):
-        """Executes the action using the given actors.
-
-        Args:
-            cast (dict): The game actors {key: tag, value: list}.
-        """
         ball = cast["balls"][0]
-        paddle = cast["paddle"][0]
-        # if self._physics_service.is_collision(ball, paddle):
-        #     self._velocity = Point(-5,-5)
-        #     print('wrong thing')
+        bricks = cast["bricks"]
+        times_run = 0
+        for brick in bricks:
+            if self._physics_service.is_collision(ball, brick):
+                x = 5
+                y = 5
+                ball.set_velocity(Point(x,y))
+                times_run += 1
+                print(times_run)
 
 
     
