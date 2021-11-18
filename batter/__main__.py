@@ -17,13 +17,13 @@ from game.control_actors_action import ControlActorsAction
 from game.move_actors_action import MoveActorsAction 
 from game.ball import Ball
 from game.brick import Brick
-from game.handle_off_screen_action import handle_off_screen_action
+from game.handle_off_screen_action import Handle_Off_Screen_Action
 from game.paddle import Paddle
+from game.handle_collisions_action import HandleCollisionsAction
 
 # TODO: Add imports similar to the following when you create these classes
 
 # from game.control_actors_action import ControlActorsAction
-# from game.handle_collisions_action import HandleCollisionsAction
 # from game.move_actors_action import MoveActorsAction
 
 def main():
@@ -95,11 +95,13 @@ def main():
     move_actors_action = MoveActorsAction()
     control_actors_action = ControlActorsAction(input_service)
     draw_actors_action = DrawActorsAction(output_service)
+    handle_off_screen_action = Handle_Off_Screen_Action(physics_service)
+    handle_collisions_action = HandleCollisionsAction(physics_service)
 
     # TODO: Create additional actions here and add them to the script
 
     script["input"] = [control_actors_action]
-    script["update"] = [move_actors_action]
+    script["update"] = [move_actors_action,handle_collisions_action, handle_off_screen_action]
     script["output"] = [draw_actors_action]
 
     # Start the game
