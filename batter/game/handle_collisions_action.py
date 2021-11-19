@@ -25,12 +25,10 @@ class HandleCollisionsAction(Action):
         bricks = cast["bricks"]
         times_run = 0
         for brick in bricks:
-            # print('it made it hear')
             if self._physics_service.is_collision(ball, brick):
-                print('it made it hear')
-
                 x = 5
-                y = 5
+                y = -5
                 ball.set_velocity(Point(x,y))
+                bricks.remove(brick)
                 times_run += 1
                 # print(times_run)
