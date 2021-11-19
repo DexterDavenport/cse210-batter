@@ -89,14 +89,14 @@ def main():
     move_actors_action = MoveActorsAction()
     control_actors_action = ControlActorsAction(input_service)
     draw_actors_action = DrawActorsAction(output_service)
-    handle_off_screen_action = Handle_Off_Screen_Action(physics_service)
+    handle_off_screen_action = Handle_Off_Screen_Action()
     handle_collisions_action = HandleCollisionsAction(physics_service)
 
     # TODO: Create additional actions here and add them to the script
 
     script["input"] = [control_actors_action]
     script["update"] = [move_actors_action,handle_collisions_action, handle_off_screen_action]
-    script["output"] = [draw_actors_action,handle_off_screen_action]
+    script["output"] = [draw_actors_action]
 
     # Start the game
     output_service.open_window("Batter")
