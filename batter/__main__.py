@@ -1,11 +1,9 @@
 import os
 
-# from batter.game import move_actor_action
 os.environ['RAYLIB_BIN_PATH'] = '.'
 
 from game import constants
 from game.director import Director
-from game.actor import Actor
 from game.point import Point
 from game.draw_actors_action import DrawActorsAction
 from game.input_service import InputService

@@ -2,7 +2,7 @@ from game.action import Action
 from game import constants
 from game.point import Point
 from game.audio_service import AudioService
-from game.actor import Actor
+# from game.actor import Actor
 
 audio_service = AudioService()
 
@@ -16,7 +16,9 @@ class HandleCollisionsAction(Action):
         paddle = cast["paddle"][0]
 
         if self._physics_service.is_collision(ball, paddle):
+            audio_service.play_sound(constants.SOUND_BOUNCE)
             ball.set_velocity(Point(ball.get_velocity().get_x(), ball.get_velocity().get_y() * -1))
+
 
 
 
@@ -25,6 +27,7 @@ class HandleCollisionsAction(Action):
         for brick in bricks:
             if self._physics_service.is_collision(ball, brick):
                 ball.set_velocity(Point(ball.get_velocity().get_x(), ball.get_velocity().get_y() * -1))
+                audio_service.play_sound(constants.SOUND_BOUNCE)
 
                 # ball.set_velocity(Point(x,y))
                 bricks.remove(brick)
