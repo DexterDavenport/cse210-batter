@@ -29,11 +29,18 @@ def main():
     # TODO: Create bricks here and add them to the list
     bricks = []
     
-    
+    num = 0
+
     for brick in range(0, 112):
         brick = Brick()
         # brick.set_image(constants.IMAGE_BRICK_2)
+        num += 1
 
+        # # This is what makes the American checkers theme
+        # if (num % 2) == 0:
+        #     brick.set_image(constants.IMAGE_BRICK_2)
+        # else:
+        #     brick.set_image(constants.IMAGE_BRICK_1)
         if x > 800:
             x = 1
             y += 40
