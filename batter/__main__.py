@@ -36,11 +36,7 @@ def main():
         # brick.set_image(constants.IMAGE_BRICK_2)
         num += 1
 
-        # # This is what makes the American checkers theme
-        # if (num % 2) == 0:
-        #     brick.set_image(constants.IMAGE_BRICK_2)
-        # else:
-        #     brick.set_image(constants.IMAGE_BRICK_1)
+        
         if x > 800:
             x = 1
             y += 40
