@@ -22,7 +22,6 @@ from game.score import Score
 def main():
     x = 1
     y = 20
-
     # create the cast {key: tag, value: list}
     cast = {}
 
