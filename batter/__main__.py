@@ -18,6 +18,7 @@ from game.handle_off_screen_action import Handle_Off_Screen_Action
 from game.paddle import Paddle
 from game.handle_collisions_action import HandleCollisionsAction
 from game.score import Score
+from game.cloud import Cloud
 
 def main():
     x = 1
@@ -35,6 +36,14 @@ def main():
         score.set_position(Point(10, y1))
         scores.append(score)
         cast["score"] = scores
+
+    cast["cloud"] = []
+    clouds = []
+
+    cloud = Cloud()
+    cloud.set_position(Point(400, 150))
+    clouds.append(cloud)
+    cast["cloud"] = clouds
 
 
 

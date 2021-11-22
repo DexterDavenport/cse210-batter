@@ -13,6 +13,8 @@ IMAGE_BRICK_2 = os.path.join(os.getcwd(), "./batter/assets/brick-3.png")
 IMAGE_BRICK_3 = os.path.join(os.getcwd(), "./batter/assets/brick-5.png")
 IMAGE_BRICK_4 = os.path.join(os.getcwd(), "./batter/assets/brick-4.png")
 
+IMAGE_CLOUD = os.path.join(os.getcwd(), "./batter/assets/cloud.png")
+
 
 
 IMAGE_PADDLE = os.path.join(os.getcwd(), "./batter/assets/bat.png")
@@ -44,3 +46,6 @@ PADDLE_HEIGHT = 24
 BALL_WIDTH = 24
 BALL_HEIGHT = 24
 
+
+CLOUD_WIDTH = 200
+CLOUD_H = 145
