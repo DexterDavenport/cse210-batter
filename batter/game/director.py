@@ -35,7 +35,7 @@ class Director:
             self._cue_action("output")
 
             # TODO: Add some logic like the following to handle game over conditions
-            if len(self._cast["bricks"]) == 0:
+            if len(self._cast["bricks"]) == 0 or len(self._cast["score"]) == 0:
                 # Game over
                 self._keep_playing = False
 

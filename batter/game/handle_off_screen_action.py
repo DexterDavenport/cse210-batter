@@ -8,19 +8,16 @@ audio_service = AudioService()
 
 
 class Handle_Off_Screen_Action(Action):
-    # def __init__(self, physics_service):
-    #     super().__init__()
-    #     self._physics_service = physics_service
+    def __init__(self, physics_service):
+        super().__init__()
+        self._physics_service = physics_service
 
 
     def execute(self, cast):
         
         ball = cast["balls"][0]
         paddle = cast["paddle"][0]
-        score = cast["score"]
-        num = len(score)
-        num = num - 1
-        score = cast["score"][num]
+        scores = cast["score"]
 
 
         if ball.get_position().get_x() <= 1:
@@ -36,9 +33,9 @@ class Handle_Off_Screen_Action(Action):
             audio_service.play_sound(constants.SOUND_BOUNCE)
             paddle.set_position(Point(345, 530))
             ball.set_position(Point(380, 500))
-            # if self._physics_service.is_collision(ball, score):
-
-            #     score.remove(num)
+            
+            # for score in scores:
+            scores.pop(0)
 
         
 
