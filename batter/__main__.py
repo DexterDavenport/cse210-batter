@@ -17,6 +17,7 @@ from game.brick import Brick
 from game.handle_off_screen_action import Handle_Off_Screen_Action
 from game.paddle import Paddle
 from game.handle_collisions_action import HandleCollisionsAction
+from game.score import Score
 
 def main():
     x = 1
@@ -24,6 +25,19 @@ def main():
 
     # create the cast {key: tag, value: list}
     cast = {}
+
+    cast["score"] = []
+    y1 = 470
+    scores = []
+    for brick in range(0, 3):
+        y1 += 32
+
+        score = Score()
+        score.set_position(Point(10, y1))
+        scores.append(score)
+        cast["score"] = scores
+
+
 
     cast["bricks"] = []
     # TODO: Create bricks here and add them to the list
@@ -36,7 +50,6 @@ def main():
         # brick.set_image(constants.IMAGE_BRICK_2)
         num += 1
 
-        
         if x > 800:
             x = 1
             y += 40
@@ -74,9 +87,6 @@ def main():
     paddles = []
     paddle = Paddle()
     paddle.set_position(Point(345, 530))
-    # paddle.set_image(constants.IMAGE_PADDLE)
-    # paddle.set_width(constants.PADDLE_WIDTH)
-    # paddle.set_height(constants.PADDLE_HEIGHT)
     paddles.append(paddle)
     cast["paddle"] = paddles
 

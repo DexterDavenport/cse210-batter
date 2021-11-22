@@ -11,6 +11,8 @@ DEFAULT_TEXT_OFFSET = 4
 IMAGE_BRICK_1 = os.path.join(os.getcwd(), "./batter/assets/brick-2.png")
 IMAGE_BRICK_2 = os.path.join(os.getcwd(), "./batter/assets/brick-3.png")
 IMAGE_BRICK_3 = os.path.join(os.getcwd(), "./batter/assets/brick-5.png")
+IMAGE_BRICK_4 = os.path.join(os.getcwd(), "./batter/assets/brick-4.png")
+
 
 
 IMAGE_PADDLE = os.path.join(os.getcwd(), "./batter/assets/bat.png")

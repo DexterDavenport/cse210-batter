@@ -12,11 +12,13 @@ class Handle_Off_Screen_Action(Action):
 
 
     def execute(self, cast):
-
+        
         ball = cast["balls"][0]
-
-        # paddle = cast["paddles"][0]
-
+        paddle = cast["paddle"][0]
+        score = cast["score"]
+        num = len(score)
+        num = num - 1
+        score = cast["score"][num]
 
 
         if ball.get_position().get_x() <= 1:
@@ -30,6 +32,9 @@ class Handle_Off_Screen_Action(Action):
             ball.set_velocity(Point(ball.get_velocity().get_x(), ball.get_velocity().get_y() * -1))
         if ball.get_position().get_y() >= 576:
             audio_service.play_sound(constants.SOUND_BOUNCE)
-            ball.set_velocity(Point(ball.get_velocity().get_x(), ball.get_velocity().get_y() * -1))
+            paddle.set_position(Point(345, 530))
+            ball.set_position(Point(380, 500))
+            score.pop(num)
+
         
 
