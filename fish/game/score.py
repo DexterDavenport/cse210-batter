@@ -7,7 +7,7 @@ class Score(Actor):
         super().__init__()
         self.set_height(constants.BRICK_HEIGHT)
         self.set_width(constants.BRICK_WIDTH)
-        self.set_image(constants.IMAGE_BRICK_4)
+        self.set_image(constants.IMAGE_SHELL)
         self._velocity = Point(0,0)
 
     def set_position(self, position):

@@ -1,7 +1,7 @@
 import os
 
 os.environ['RAYLIB_BIN_PATH'] = '.'
-
+import random
 from game import constants
 from game.director import Director
 from game.point import Point
@@ -13,12 +13,13 @@ from game.audio_service import AudioService
 from game.control_actors_action import ControlActorsAction
 from game.move_actors_action import MoveActorsAction 
 from game.ball import Ball
-from game.brick import Brick
 from game.handle_off_screen_action import Handle_Off_Screen_Action
-from game.paddle import Paddle
 from game.handle_collisions_action import HandleCollisionsAction
 from game.score import Score
-from game.cloud import Cloud
+# from game.cloud import Cloud
+from game.ocean import Ocean
+from game.shark import Shark
+from game.fish import Fish
 
 
 def main():
@@ -27,61 +28,80 @@ def main():
     # create the cast {key: tag, value: list}
     cast = {}
 
+    cast["ocean"] = []
+    oceans = []
+
+    ocean = Ocean()
+    ocean.set_position(Point(0, 0))
+    oceans.append(ocean)
+    cast["ocean"] = oceans
+
     cast["score"] = []
-    y1 = 470
+    x1 = 600
     scores = []
-    for brick in range(0, 3):
-        y1 += 32
+    for round in range(0, 3):
+        # x1 += 65
 
         score = Score()
-        score.set_position(Point(10, y1))
+        score.set_position(Point(x1, 550))
+        x1 += 65
         scores.append(score)
         cast["score"] = scores
 
-    cast["cloud"] = []
-    clouds = []
+    cast["shark"] = []
+    sharks = []
 
-    cloud = Cloud()
-    cloud.set_position(Point(400, 150))
-    clouds.append(cloud)
-    cast["cloud"] = clouds
+    x = 800
+    # y = 0
+    s = -2
+    for shark in range(0,3):
+        shark = Shark()
+        y = random.randint(0, 580)
+        x -= 20
+        # y += 100
+        # s -= 1
+        s = random.randint(-10,-1)
+        shark.set_position(Point(x, y))
+        shark._velocity = Point(s,0)
+        sharks.append(shark)
+        cast["shark"] = sharks
 
 
 
     cast["bricks"] = []
     # TODO: Create bricks here and add them to the list
-    bricks = []
+    # bricks = []
     
-    num = 0
+    # num = 0
 
-    for brick in range(0, 112):
-        brick = Brick()
-        # brick.set_image(constants.IMAGE_BRICK_2)
-        num += 1
+    # for brick in range(0, 112):
+    #     brick = Brick()
+    #     # brick.set_image(constants.IMAGE_BRICK_2)
+    #     num += 1
 
-        if x > 800:
-            x = 1
-            y += 40
-        # This is what makes the American Flag theme
-        if x < 200 and (y == 20 or 60 or 100 or 140):
-            brick.set_image(constants.IMAGE_BRICK_2)
-        if x > 200 or y ==180:
-            brick.set_image(constants.IMAGE_BRICK_1)
-        if y ==60 and x > 200:
-            brick.set_image(constants.IMAGE_BRICK_3)
-        if y ==140:
-            brick.set_image(constants.IMAGE_BRICK_3)
-        if y ==220:
-            brick.set_image(constants.IMAGE_BRICK_3)
-        if y ==260:
-            brick.set_image(constants.IMAGE_BRICK_1)
+    #     if x > 800:
+    #         x = 1
+    #         y += 40
+    #     # This is what makes the American Flag theme
+    #     if x < 200 and (y == 20 or 60 or 100 or 140):
+    #         brick.set_image(constants.IMAGE_BRICK_2)
+    #     if x > 200 or y ==180:
+    #         brick.set_image(constants.IMAGE_BRICK_1)
+    #     if y ==60 and x > 200:
+    #         brick.set_image(constants.IMAGE_BRICK_3)
+    #     if y ==140:
+    #         brick.set_image(constants.IMAGE_BRICK_3)
+    #     if y ==220:
+    #         brick.set_image(constants.IMAGE_BRICK_3)
+    #     if y ==260:
+    #         brick.set_image(constants.IMAGE_BRICK_1)
 
-        brick.set_position(Point(x, y))
+    #     brick.set_position(Point(x, y))
         
-        x += 50
+    #     x += 50
 
-        bricks.append(brick)
-    cast["bricks"] = bricks
+    #     bricks.append(brick)
+    # cast["bricks"] = bricks
 
     cast["balls"] = []
     # TODO: Create a ball here and add it to the list
@@ -91,13 +111,13 @@ def main():
     balls.append(ball)
     cast["balls"] = balls
 
-    cast["paddle"] = []
+    cast["fish"] = []
     # TODO: Create a paddle here and add it to the list
-    paddles = []
-    paddle = Paddle()
-    paddle.set_position(Point(345, 530))
-    paddles.append(paddle)
-    cast["paddle"] = paddles
+    fishs = []
+    fish = Fish()
+    fish.set_position(Point(345, 500))
+    fishs.append(fish)
+    cast["fish"] = fishs
 
     # Create the script {key: tag, value: list}
     script = {}
@@ -119,7 +139,7 @@ def main():
     script["output"] = [draw_actors_action]
 
     # Start the game
-    output_service.open_window("Batter")
+    output_service.open_window("Fish Simulator")
     audio_service.start_audio()
     audio_service.play_sound(constants.SOUND_START)
     
