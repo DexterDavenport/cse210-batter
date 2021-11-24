@@ -15,4 +15,3 @@ class Brick(Actor):
         self._position = position
     def get_postiton(self):
         return self._position
-    

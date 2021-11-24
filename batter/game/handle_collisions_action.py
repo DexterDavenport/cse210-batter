@@ -24,4 +24,3 @@ class HandleCollisionsAction(Action):
                 ball.set_velocity(Point(ball.get_velocity().get_x(), ball.get_velocity().get_y() * -1))
                 audio_service.play_sound(constants.SOUND_BOUNCE)
                 bricks.remove(brick)
-

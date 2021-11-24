@@ -36,6 +36,3 @@ class Handle_Off_Screen_Action(Action):
             
             # for score in scores:
             scores.pop(0)
-
-        
-

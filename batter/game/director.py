@@ -10,7 +10,6 @@ class Director:
     
     Stereotype:
         Controller
-
     Attributes:
         _cast (dictionary): The game actors {key: name, value: object}
         _script (dictionary): The game actions {key: tag, value: object}
