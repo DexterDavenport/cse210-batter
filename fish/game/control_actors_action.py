@@ -7,7 +7,7 @@ class ControlActorsAction(Action):
 
     def execute(self, cast):
         direction = self._input_service.get_direction()
-        paddle = cast["paddle"][0]
-        paddle.set_velocity(direction.scale(constants.PADDLE_SPEED))
+        fish = cast["fish"][0]
+        fish.set_velocity(direction.scale(constants.PADDLE_SPEED))
 
         

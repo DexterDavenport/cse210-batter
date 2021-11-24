@@ -5,10 +5,10 @@ from game import constants
 class Ball(Actor):
     def __init__(self):
         super().__init__()
-        self.set_height(constants.BALL_HEIGHT)
-        self.set_width(constants.BALL_WIDTH)
-        self.set_image(constants.IMAGE_BALL)
-        self._velocity = Point(10,10)
+        self.set_height(0)
+        self.set_width(0)
+        # self.set_image(constants.IMAGE_BALL)
+        self._velocity = Point(0,0)
 
     def set_position(self, position):
         self._position = position
