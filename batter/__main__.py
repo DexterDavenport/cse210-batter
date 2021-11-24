@@ -20,6 +20,7 @@ from game.handle_collisions_action import HandleCollisionsAction
 from game.score import Score
 from game.cloud import Cloud
 
+
 def main():
     x = 1
     y = 20
