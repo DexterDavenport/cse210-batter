@@ -12,11 +12,26 @@ class HandleCollisionsAction(Action):
 
     def execute(self, cast):
         ball = cast["balls"][0]
-        paddle = cast["paddle"][0]
+        fish = cast["fish"][0]
+        shark = cast["shark"][0]
+        shark1 = cast["shark"][1]
+        shark2 = cast["shark"][2]
 
-        if self._physics_service.is_collision(ball, paddle):
+        scores = cast["score"]
+
+
+        if self._physics_service.is_collision(shark, fish):
             audio_service.play_sound(constants.SOUND_BOUNCE)
-            ball.set_velocity(Point(ball.get_velocity().get_x(), ball.get_velocity().get_y() * -1))
+            fish.set_position(Point(345, 530))
+            scores.pop(0)
+        if self._physics_service.is_collision(shark1, fish):
+            audio_service.play_sound(constants.SOUND_BOUNCE)
+            fish.set_position(Point(345, 530))
+            scores.pop(0)
+        if self._physics_service.is_collision(shark2, fish):
+            audio_service.play_sound(constants.SOUND_BOUNCE)
+            fish.set_position(Point(345, 530))
+            scores.pop(0)
 
         bricks = cast["bricks"]
         for brick in bricks:
